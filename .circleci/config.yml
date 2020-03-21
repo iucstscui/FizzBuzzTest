@@ -11,18 +11,16 @@ jobs:
       - checkout
       - run: dotnet build
       - persist_to_workspace:
-         root: workspace
+         root: .
          paths:
-           - FizzBuzz.sln
-           - test
-           - src
+           - .
 
   test: 
     executor: win/default     
     
     steps:
       - attach_workspace: 
-          at: workspace/output
+          at: .
       - run: dotnet test
 
 workflows:
