@@ -1,13 +1,34 @@
- version: 2.1
+version: 2.1
 
- orbs:
+orbs:
   win: circleci/windows@2.2.0
 
- jobs:
-   build:
-     executor: win/default     
+jobs:
+  build:
+    executor: win/default     
     
-     steps:
-       - checkout
-       - run: dotnet build
-       - run: dotnet test
+    steps:
+      - checkout
+      - run: dotnet build
+      - persist_to_workspace:
+         root: .
+         paths:
+           - .
+
+  test: 
+    executor: win/default     
+    
+    steps:
+      - attach_workspace: 
+          at: .
+      - run: dotnet test
+
+workflows:
+  version: 2.1
+
+  build-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
