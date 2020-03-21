@@ -10,4 +10,25 @@
      steps:
        - checkout
        - run: dotnet build
+       - persist_to_workspace:
+          root: workspace
+          paths:
+            - output
+  
+  test: 
+      executor: win/default     
+    
+     steps:
+       - attach_workspace: 
+         at: workspace/output
        - run: dotnet test
+
+workflows:
+  version: 2.1
+
+  btd:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
