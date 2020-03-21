@@ -21,9 +21,9 @@ jobs:
     steps:
       - attach_workspace: 
           at: tmp
-      - run: cd tmp
-      - run: dir
-      - run: dotnet test
+      - run:
+        command: dotnet test
+        working_directory: tmp
 
 workflows:
   version: 2.1
