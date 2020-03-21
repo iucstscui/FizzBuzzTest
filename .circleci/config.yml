@@ -20,7 +20,8 @@ jobs:
     
     steps:
       - attach_workspace: 
-          at: .
+          at: tmp
+      - run: cd tmp
       - run: dotnet test
 
 workflows:
