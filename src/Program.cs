@@ -8,7 +8,7 @@ namespace FizzBuzz
         {
             for (int i = 1; i <= 100; ++i)
             {
-                Console.WriteLine(FizzBuzz(i));
+                Console.WriteLine(FizzBuzz(i)
             }
         }
 
