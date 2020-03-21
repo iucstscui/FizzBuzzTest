@@ -20,7 +20,7 @@ jobs:
     
     steps:
       - attach_workspace: 
-        at: workspace/output
+          at: workspace/output
       - run: dotnet test
 
 workflows:
